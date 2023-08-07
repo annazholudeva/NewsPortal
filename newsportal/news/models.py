@@ -2,8 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Sum
 
-from newsportal.news.properties import TYPES, news
-
 
 class Author(models.Model):
     author_user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -25,6 +23,11 @@ class Category(models.Model):
 
 
 class Post(models.Model):
+    article = 'a'
+    news = 'n'
+    TYPES = [(article, 'Статья'),
+             (news, 'Новость')]
+
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
     title = models.CharField(max_length=255)

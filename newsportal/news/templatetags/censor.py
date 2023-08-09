@@ -8,7 +8,6 @@ def censor(words):
     censored = ''
     replace = '*'
     for word in words:
-        # for i in word:
         if word.isupper():
             censored = word[0] + replace
             replace += '*'

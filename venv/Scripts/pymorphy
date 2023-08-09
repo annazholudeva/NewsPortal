@@ -1,0 +1,4 @@
+#!c:\users\user\documents\github\newsportal_2\venv\scripts\python.exe
+import sys
+from pymorphy2 import cli
+sys.exit(cli.main())

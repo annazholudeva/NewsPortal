@@ -1,5 +1,4 @@
-from django.forms import DateInput
-from django_filters import FilterSet, DateFilter, CharFilter
+from django_filters import FilterSet
 from .models import Post
 
 

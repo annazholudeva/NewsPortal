@@ -51,3 +51,20 @@ class NewsDelete(DeleteView):
     model = Post
     template_name = 'news_delete.html'
     success_url = reverse_lazy('allnews')
+
+
+class NewsSearch(ListView):
+    model = Post
+    template_name = 'news_search.html'
+    context_object_name = 'news'
+    ordering = ['-date']
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        self.filterset = PostFilter(self.request.GET, queryset)
+        return self.filterset.qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = PostFilter(self.request.GET, queryset=self.get_queryset())
+        return context
